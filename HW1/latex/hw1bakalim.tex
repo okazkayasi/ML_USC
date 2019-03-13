@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+\begin{document}
+	\begin{center}
+		\Large\textbf{CDCI 567-Machine Learning Assignment-1}
+	\end{center}
+	\section{Question-1}
+	\subsection{MLE}
+	\subsubsection{Beta($\alpha$,1)}
+	$x_{1},x_{2},...,x_{n}$ are samples of $Beta(\alpha,1)$ distribution.
+	
+	In this case, pdf of $x_(i), i=1,...,n$ is $$f(x_{i}|\alpha,1))=\frac{x^{\alpha-1}}{\beta(\alpha,1)}=
+	\frac{x^{\alpha-1}}{\int_{0}^{1}t^{\alpha-1}dt}=
+	\alpha x^{\alpha-1}$$
+	
+	Likelihood function and log likelihood function:
+	$$L(\alpha,1|x)=\prod_{i=1}^{n}\alpha x^{\alpha-1}$$
+	$$l(\alpha,1|x)=log(\alpha^{n}) + log(\prod_{i=1}^{n}x_{i}^{\alpha-1})=
+	nlog(\alpha) + \sum_{i=1}^{n}(\alpha-1)log(x_{i})$$
+	
+	Derivative of $l(\alpha,1|x)$:
+	$$\frac{\partial l(\alpha,1|x)}{\partial \alpha} = \frac{n}{\alpha} + \sum_{i=1}^{n}log(x_{i})=0$$
+	
+	$$\frac{\partial^{2} l(\alpha,1|x)}{\partial \alpha} = -\frac{n}{\alpha^{2}} < 0$$
+	
+	$$\hat{\alpha} = -\frac{n}{\sum_{i=1}^{n}log(x_{i}}$$
+	\subsubsection{Normal($\theta$,diag($\theta$))}
+	$x_{1},x_{2},...,x_{n}$ are samples of $Normal(\theta,diag(\theta))$ distribution.
+	In this case, pdf of $x_{i}, i = 1,...,n$ is
+	$$f(x_{i}|\theta,diag(\theta)) = \frac{1}{\sqrt{2\pi diag(\theta})}\exp(-\frac{(x_{i}-\theta)}{2\theta})$$
+	
+	Likelihood function and log likelihood function:
+	$$L(\theta,diag(\theta)|x_{i}) = (2\pi)^{-\frac{d}{2}}|diag(\theta)|^{-\frac{1}{2}}\exp(-\frac{1}{2}(x-\theta)^{T}diag(\theta)^{-1}(x-\theta))$$	
+	
+	$$|diag(\theta)| = \theta^{d}$$
+	$$l(\theta,diag(\theta)|x_{i}) = -\frac{d}{2}log(2\pi\theta) - \sum_{i=1}^{n}\frac{1}{2} \frac{(x_{i}-\theta_{i})^{T}(x_{i}-\theta_{i})}{\theta_{i}}$$
+	
+	Derivative of $l(\theta,diag(\theta)|x_{i})$:
+	$$\frac{\partial l(\theta,diag(\theta)|x_{i})}{\partial \theta} = -\frac{dn}{2\theta} - \frac{n}{2} + \frac{1}{2\theta^{2}}$$
+\end{document}
